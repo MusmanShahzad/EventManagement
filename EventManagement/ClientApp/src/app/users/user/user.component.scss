@@ -1,0 +1,34 @@
+.guest-list a {
+  margin-left: 5px;
+}
+
+.guest-list p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card {
+  cursor: pointer;
+  transition: box-shadow 0.3s ease-in-out;
+  .edit-icon {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: none;
+    z-index: 1;
+  }
+  &:hover {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    .edit-icon {
+      display: block;
+      opacity: 1;
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .edit-icon {
+    display: block !important;
+  }
+}

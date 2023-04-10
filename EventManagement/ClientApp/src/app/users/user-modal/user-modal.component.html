@@ -1,0 +1,86 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ id ? "Update User" : "Insert User" }}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="dismiss()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <app-loader *ngIf="isDataLoading"></app-loader>
+  <form *ngIf="!isDataLoading" [formGroup]="formGroup">
+    <div class="form-group mb-2">
+      <label>Name</label>
+      <input class="form-control" formControlName="name" />
+      <small
+        *ngIf="name.dirty && name.errors && name.errors.required"
+        class="form-text text-danger"
+        >Name is required</small
+      >
+      <small
+        *ngIf="name.dirty && name.errors && name.errors.maxlength"
+        class="form-text text-danger"
+        >Name length should not be greater than
+        {{ name.errors.maxlength.requiredLength }} characters</small
+      >
+    </div>
+    <div class="form-group mb-2">
+      <label>Email</label>
+      <input class="form-control" formControlName="email" type="email" />
+      <small
+        *ngIf="email.dirty && email.errors && email.errors.required"
+        class="form-text text-danger"
+        >Email is required</small
+      >
+      <small
+        *ngIf="email.dirty && email.errors && email.errors.email"
+        class="form-text text-danger"
+        >invalid email</small
+      >
+    </div>
+    <div class="form-group mb-2">
+      <label>Events</label>
+      <ng-multiselect-dropdown
+        placeholder="Events"
+        [settings]="dropdownSettings"
+        [data]="dropdownList"
+        formControlName="eventIds"
+      >
+      </ng-multiselect-dropdown>
+    </div>
+    <div class="form-group" formArrayName="allergies">
+      <div
+        *ngFor="let allergy of allergies?.controls; let i = index"
+        class="mb-2"
+      >
+        <div [formGroup]="getAllergy(i)" class="input-group">
+          <input formControlName="name" class="form-control" />
+          <div class="input-group-prepend">
+            <div class="input-group-text bg-danger" (click)="removeAllergy(i)">
+              X
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary" (click)="addFormGroupToAllergies('')">
+      Add Allergies</button
+    ><br />
+    <small
+      *ngIf="formGroup.errors?.allergyNameNotUnique"
+      class="form-text text-danger"
+      >allergies names should be unique and not empty</small
+    >
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="dismiss()">
+    Close
+  </button>
+  <button
+    type="button"
+    class="btn btn-primary"
+    [disabled]="!formGroup.valid || isSaving || isDataLoading"
+    (click)="saveEvent()"
+  >
+    {{ isSaving || isDataLoading ? "Loading..." : "Save changes" }}
+  </button>
+</div>

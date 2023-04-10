@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <app-loader *ngIf="isLoading"></app-loader>
+    <div class="col-md-6" *ngIf="!isLoading && singleEvent">
+      <h1 class="event-title">{{ singleEvent.name }}</h1>
+      <ul class="event-info">
+        <li><strong>Created Date:</strong> {{ singleEvent.createdOn }}</li>
+        <li><strong>Event Date:</strong> {{ singleEvent.startDate }}</li>
+      </ul>
+      <h2 class="guest-title" *ngIf="singleEvent.users.length > 0">Guests:</h2>
+      <ul class="guest-list">
+        <li
+          *ngFor="let user of singleEvent.users"
+          (click)="userClick(user.id)"
+          class="cursor-pointer"
+        >
+          <div class="guest-info">
+            <h3 class="guest-name">{{ user.name }}</h3>
+            <ul class="guest-data">
+              <li><strong>Email:</strong> {{ user.email }}</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+      <button class="btn btn-primary mx-2 mt-2" (click)="openModal()">
+        Edit
+      </button>
+      <button class="btn btn-danger mt-2" (click)="deleteEvent()">
+        delete
+      </button>
+    </div>
+    <div class="col-md-6" *ngIf="!isLoading && !singleEvent">
+      No record found!
+    </div>
+  </div>
+</div>

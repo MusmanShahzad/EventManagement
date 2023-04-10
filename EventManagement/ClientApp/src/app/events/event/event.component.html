@@ -1,0 +1,17 @@
+<div class="event">
+  <div class="card position-relative" (click)="cardClick()">
+    <a class="edit-icon" (click)="editClick($event)">Edit</a>
+    <div class="card-body">
+      <h5 class="card-title mb-3">{{ singleEvent?.name }}</h5>
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <span class="badge bg-primary">{{ singleEvent?.startDate }}</span>
+      </div>
+      <div class="guest-list">
+        <p class="card-text" *ngIf="singleEvent?.users">
+          <strong>Guests:</strong> {{ mapUsers(singleEvent?.users) }}
+          <span *ngIf="userCount">...{{ userCount }}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

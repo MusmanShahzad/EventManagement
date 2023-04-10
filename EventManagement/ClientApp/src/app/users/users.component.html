@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="text-center mb-3">Users</h1>
+    </div>
+  </div>
+  <button class="btn btn-primary btn-lg mb-3" (click)="openModal()">
+    Add User
+  </button>
+  <div class="row">
+    <app-loader *ngIf="isLoading"></app-loader>
+    <div *ngIf="!isLoading && !users">An error occur</div>
+    <div *ngIf="!isLoading && users?.length === 0">No record found</div>
+    <ng-container *ngIf="!isLoading">
+      <app-user
+        *ngFor="let user of users"
+        [singleUser]="user"
+        (doReload)="fetchUsers()"
+        class="col-12 col-sm-12 col-md-6 col-lg-4 mx-auto mb-3"
+      ></app-user>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+C:\Users\HP\Desktop\Test-Project\EventManagement\EventManagement-data\bin\Debug\net6.0\EventManagement-data.deps.json
+C:\Users\HP\Desktop\Test-Project\EventManagement\EventManagement-data\bin\Debug\net6.0\EventManagement-data.runtimeconfig.json
+C:\Users\HP\Desktop\Test-Project\EventManagement\EventManagement-data\bin\Debug\net6.0\EventManagement-data.dll
+C:\Users\HP\Desktop\Test-Project\EventManagement\EventManagement-data\bin\Debug\net6.0\EventManagement-data.pdb
+C:\Users\HP\Desktop\Test-Project\EventManagement\EventManagement-data\obj\Debug\net6.0\EventManagement-data.csproj.AssemblyReference.cache
+C:\Users\HP\Desktop\Test-Project\EventManagement\EventManagement-data\obj\Debug\net6.0\EventManagement-data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\Desktop\Test-Project\EventManagement\EventManagement-data\obj\Debug\net6.0\EventManagement-data.AssemblyInfoInputs.cache
+C:\Users\HP\Desktop\Test-Project\EventManagement\EventManagement-data\obj\Debug\net6.0\EventManagement-data.AssemblyInfo.cs
+C:\Users\HP\Desktop\Test-Project\EventManagement\EventManagement-data\obj\Debug\net6.0\EventManagement-data.csproj.CoreCompileInputs.cache
+C:\Users\HP\Desktop\Test-Project\EventManagement\EventManagement-data\obj\Debug\net6.0\EventManagement-data.dll
+C:\Users\HP\Desktop\Test-Project\EventManagement\EventManagement-data\obj\Debug\net6.0\refint\EventManagement-data.dll
+C:\Users\HP\Desktop\Test-Project\EventManagement\EventManagement-data\obj\Debug\net6.0\EventManagement-data.pdb
+C:\Users\HP\Desktop\Test-Project\EventManagement\EventManagement-data\obj\Debug\net6.0\EventManagement-data.genruntimeconfig.cache
+C:\Users\HP\Desktop\Test-Project\EventManagement\EventManagement-data\obj\Debug\net6.0\ref\EventManagement-data.dll

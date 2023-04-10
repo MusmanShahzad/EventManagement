@@ -1,0 +1,95 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ id ? "Update Event" : "Insert Event" }}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="dismiss()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <app-loader *ngIf="isDataLoading"></app-loader>
+  <form *ngIf="!isDataLoading" [formGroup]="formGroup">
+    <div class="form-group mb-2">
+      <label>Name</label>
+      <input class="form-control" formControlName="name" />
+      <small
+        *ngIf="name.dirty && name.errors && name.errors.required"
+        class="form-text text-danger"
+        >Name is required</small
+      >
+      <small
+        *ngIf="name.dirty && name.errors && name.errors.maxlength"
+        class="form-text text-danger"
+        >Name length should not be greater than
+        {{ name.errors.maxlength.requiredLength }} characters</small
+      >
+    </div>
+    <div class="form-group mb-2">
+      <label>Start Date</label>
+      <div class="input-group">
+        <input
+          class="form-control"
+          placeholder="yyyy-mm-dd"
+          name="dp"
+          ngbDatepicker
+          #d="ngbDatepicker"
+          formControlName="startDate"
+          [minDate]="minDate"
+        />
+        <div class="input-group-prepend">
+          <div class="input-group-text" (click)="d.toggle()">
+            <fa-icon [icon]="calenderIcon"></fa-icon>
+          </div>
+        </div>
+      </div>
+      <small
+        *ngIf="startDate.dirty && startDate.errors && startDate.errors.required"
+        class="form-text text-danger"
+        >Start date is required</small
+      >
+      <small
+        *ngIf="startDate.dirty && startDate.errors && startDate.errors.ngbDate"
+        class="form-text text-danger"
+        >start date is not in correct format it should be yyyy-mm-dd</small
+      >
+    </div>
+    <div class="form-group mb-2">
+      <label>Users</label>
+      <ng-multiselect-dropdown
+        placeholder="Users"
+        [settings]="dropdownSettings"
+        [data]="dropdownList"
+        formControlName="userIds"
+      >
+      </ng-multiselect-dropdown>
+      <small
+        *ngIf="userIds.dirty && userIds.errors && userIds.errors.required"
+        class="form-text text-danger"
+        >users are required</small
+      >
+      <small
+        *ngIf="
+          userIds.touched &&
+          userIds.dirty &&
+          userIds.errors &&
+          !userIds.errors.required &&
+          userIds.errors.minlength
+        "
+        class="form-text text-danger"
+        >There should be {{ userIds.errors.minlength.requiredLength }}users
+        should be added</small
+      >
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="dismiss()">
+    Close
+  </button>
+  <button
+    type="button"
+    class="btn btn-primary"
+    [disabled]="!formGroup.valid || isSaving || isDataLoading"
+    (click)="saveEvent()"
+  >
+    {{ isSaving || isDataLoading ? "Loading..." : "Save changes" }}
+  </button>
+</div>
